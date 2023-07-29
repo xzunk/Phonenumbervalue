@@ -2,7 +2,7 @@
 $phoneNumber = $_POST['phoneNumber'];
 
 $percentage = 0;
-// Rule 1: Phone number should have 10 digits and the first digit must be 0
+
 if (strlen($phoneNumber) === 10 && $phoneNumber[0] === '0') {
   $thirdDigit = $phoneNumber[2];
   $fourthDigit = $phoneNumber[3];
@@ -13,7 +13,7 @@ if (strlen($phoneNumber) === 10 && $phoneNumber[0] === '0') {
   $ninthDigit = $phoneNumber[8];
   $tenthDigit = $phoneNumber[9];
 
-  // Rule 2: Check percentage based on the 3rd digit
+  
   if (in_array($thirdDigit, ['7', '1', '8', '5', '2'])) {
     // Rule 4: Check if 3rd and 4th digits are the same
     
@@ -39,12 +39,12 @@ if (strlen($phoneNumber) === 10 && $phoneNumber[0] === '0') {
     }
   }
 
-  // Rule 8: Check if 3rd and 4th digits are the same, and 9th and 7th digits are the same, and 10th digit is the same as 8th digit
+ 
   if ($thirdDigit === $fourthDigit && $ninthDigit === $seventhDigit && $tenthDigit === $eighthDigit) {
     $percentage = 94;
   }
 
-  // Rule 9: Check if numbers in places 5, 6, and 8, 9 are the same
+  
   if ($fifthDigit === $sixthDigit && $eighthDigit === $ninthDigit) {
     $percentage = 96;
   }
