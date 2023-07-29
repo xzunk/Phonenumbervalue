@@ -1,0 +1,134 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Number value Detector 🇱🇰</title>
+  <style>
+    body {
+      
+      background-color: #6f7070;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 95%;
+      
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #000000;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #363a3f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+      color: #ac0101;
+
+    }
+
+    .disclaimer   {
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .container1  {
+      
+      font-size: 14px;
+      color: #777;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Phone Number value Detector 🇱🇰</h1>
+    <form id="phoneNumberForm">
+      <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter 10 Digit Phone Number" maxlength="10">
+      <button type="submit">Check Number</button>
+    </form>
+    <div id="result"></div>
+    <div class="container1">
+      <ul>
+        <li class="list-group-item">0-41 -  New number.</li>
+        <li class="list-group-item">42-60 - Mature number.</li>
+        <li class="list-group-item">61-75 - Gold number that is easy to remember your number.</li>
+        <li class="list-group-item">76-80 - Premium number that is easy to remember your number.</li>
+        <li class="list-group-item">81-100 -Platinum Unique one in the VIP category with the highest value</li>
+      </ul>
+    </div>
+    <p class="disclaimer">We do not collect any numbers.</p>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+  <script src="script.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#phoneNumberForm').submit(function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var phoneNumber = $('#phoneNumber').val();
+
+        // AJAX request to check_reputation.php
+        $.ajax({
+          type: 'POST',
+          url: 'check_reputation.php',
+          data: { phoneNumber: phoneNumber },
+          dataType: 'json',
+          success: function(response) {
+            var percentage = response.percentage;
+            $('#result').html('Phone Number Reputation Score: ' + percentage + '%');
+          },
+          error: function() {
+            alert('Error occurred. Please try again.');
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
