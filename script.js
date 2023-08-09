@@ -59,7 +59,7 @@ function validatePhoneNumber() {
   // Display the result
   document.getElementById("result").innerHTML = "Phone Number Reputation: " + percentage + "%";
 
-  // Store the checked number in a log file
+ 
 
   return false; // Prevent form submission for this example
 }
